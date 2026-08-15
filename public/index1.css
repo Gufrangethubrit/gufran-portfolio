@@ -1,0 +1,104 @@
+.floating-contact {
+      position: fixed;
+      left: 30px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+      animation: floatUp 1s ease-out;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      text-decoration: none;
+      background: rgba(10, 13, 28, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      animation: bounce 3s infinite;
+    }
+
+    .contact-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .phone-icon {
+      color: #818CF8;
+    }
+
+    .phone-icon:hover {
+      background: rgba(99, 102, 241, 0.15);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+    }
+
+    .whatsapp-icon {
+      color: #14B8A6;
+    }
+
+    .whatsapp-icon:hover {
+      background: rgba(20, 184, 166, 0.15);
+      box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+      color: #ffffff;
+    }
+
+    /* Top Button */
+    .top-button {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(10, 13, 28, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: #818CF8;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: none;
+    }
+
+    .top-button:hover {
+      transform: translateY(-5px) scale(1.1);
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+    }
+
+    .top-button.show {
+      display: block;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    /* Animations */
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: scale(0); }
+      to { opacity: 1; transform: scale(1); }
+    }

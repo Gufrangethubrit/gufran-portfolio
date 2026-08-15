@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/public/img/Gufran-img.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gufran-Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/index1.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- Floating Contact Icons -->
+  <div class="floating-contact">
+    <a href="tel:+918542877243" class="contact-icon phone-icon" title="Call Me" target="_blank" rel="noopener noreferrer">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <a href="https://wa.me/918542877243" class="contact-icon whatsapp-icon" target="_blank" rel="noopener noreferrer" title="WhatsApp Me">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Top Button -->
+  <button class="top-button" id="topBtn" onclick="scrollToTop()" title="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Scroll to top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide top button based on scroll position
+    window.addEventListener('scroll', function() {
+      const topBtn = document.getElementById('topBtn');
+      if (window.pageYOffset > 300) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+
+</html>
