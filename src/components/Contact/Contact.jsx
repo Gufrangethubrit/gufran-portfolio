@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -8,26 +7,34 @@ export const Contact = () => {
   const form = useRef();
   const [isSent, setIsSent] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    
+    const formData = new FormData(form.current);
+    const data = Object.fromEntries(formData.entries());
 
-    emailjs
-      .sendForm(
-        "service_cdemfau",
-        "template_zc8zzfv",
-        form.current,
-        "EpCx0vcSKCY2i_UOH"
-      )
-      .then(
-        () => {
-          setIsSent(true);
-          form.current.reset();
-          toast.success("Message sent successfully!", { theme: "dark" });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        () => {
-          toast.error("Failed to send message. Try again.", { theme: "dark" });
-        }
-      );
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSent(true);
+        form.current.reset();
+        toast.success("Message sent successfully!", { theme: "dark" });
+      } else {
+        toast.error("Failed to send message. Try again.", { theme: "dark" });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred. Try again later.", { theme: "dark" });
+    }
   };
 
   return (
