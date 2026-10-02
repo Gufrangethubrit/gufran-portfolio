@@ -28,7 +28,7 @@ export const Work = () => {
   return (
     <section
       id="work"
-      className="py-24 px-4 sm:px-6 md:px-[5vw] lg:px-[10vw] font-sans relative overflow-hidden bg-gradient-to-b from-[#000428] to-black border-t border-white/[0.05]"
+      className="seamless-section py-24 px-4 sm:px-6 md:px-[5vw] lg:px-[10vw] font-sans relative overflow-hidden"
     >
       {/* Background Dot Grid */}
       <div 

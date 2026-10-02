@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 export const Footer = () => {
   return (
     <>
-      <footer className="relative bg-gradient-to-b from-black to-[#000428] text-white py-12 px-4 sm:px-6 md:px-[7vw] lg:px-[20vw] border-t border-white/[0.05] overflow-hidden"
+      <footer className="footer-section relative text-white py-14 px-4 sm:px-6 md:px-[7vw] lg:px-[20vw] overflow-hidden"
       >
         {/* Premium Background Dot Grid */}
         <div 

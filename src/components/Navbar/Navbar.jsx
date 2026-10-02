@@ -71,7 +71,7 @@ export const Navbar = () => {
               to="/contact"
               className="group flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 text-sm"
             >
-              Let's Work Together
+              Contact Me
             </Link>
           </div>
 
@@ -112,7 +112,7 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-lg shadow-blue-600/25"
                 >
-                  Let's Work Together
+                  Contact Me
                 </Link>
               </div>
             </ul>

@@ -49,14 +49,14 @@ export const Hero = () => {
               to="/projects"
               className="group flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
             >
-              View My Work
+              View Work
             </Link>
 
             <Link
               to="/contact"
               className="group flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:border-gray-400 hover:bg-gray-800/50 text-white font-medium transition-all duration-300"
             >
-              Let's Work Together
+              Contact Me
             </Link>
           </div>
 

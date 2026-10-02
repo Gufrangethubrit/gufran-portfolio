@@ -13,6 +13,10 @@ body {
   color: #ffffff;
 }
 
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
 @layer utilities {
   .clip-path-custom {
     clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
@@ -394,33 +398,88 @@ body {
   will-change: transform, opacity;
 }
 
-/* Section Backgrounds */
-.section-about {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL — Seamless Section System
+   All sections share ONE transparent base. The global black
+   body color shows through. Each section fades in/out softly
+   via ::before / ::after pseudo-element gradient overlays.
+   Result: zero hard lines between any sections, ever.
+═══════════════════════════════════════════════════════════ */
+
+.seamless-section {
+  background: transparent;
+  position: relative;
 }
 
-.section-contact {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+/* Soft top bleed — melts into the section above */
+.seamless-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.section-education {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+/* Soft bottom bleed — melts into the section below */
+.seamless-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, #000000 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.section-experience {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-}
-
-.section-work {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-}
-
-.section-skills {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-}
-
+/* Legacy section-* classes — all now transparent for backward compat */
+.section-about,
+.section-contact,
+.section-education,
+.section-experience,
+.section-work,
+.section-skills,
 .section-footer {
-  background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 20%, #2d1b4e 40%, #1a0f2e 60%, #0a0a1a 80%, #000000 100%), radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%), radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 60%), radial-gradient(circle at 30% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  background: transparent;
+}
+
+/* ── Footer: solid base + top fade only ──────────────────── */
+/* Footer is the LAST element — needs its own background     */
+/* so it doesn't appear transparent/invisible.               */
+.footer-section {
+  background: linear-gradient(to bottom, #050508 0%, #000000 100%);
+  position: relative;
+}
+
+/* Top fade — footer blends in from Contact section above */
+.footer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle top glow accent line */
+.footer-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Blur Component */
@@ -502,71 +561,414 @@ body {
   animation: slideInTop 0.8s ease-out forwards;
 }
 
-/* Profile Image 3D Hover Effect */
-.profile-image-container {
-  position: relative;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
+/* ═══════════════════════════════════════════════════════════
+   ABOUT — Seamless Section Background
+═══════════════════════════════════════════════════════════ */
+
+/* Section itself: transparent — global black body shows through */
+.about-section {
+  background: transparent;
 }
 
-.profile-image-container:hover {
-  transform: translateZ(20px) scale(1.05);
-}
-
-.profile-image-container .tilt-element {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.profile-image-container:hover .tilt-element {
-  transform: translateZ(20px) scale(1.05);
-}
-
-/* Enhanced Tilt Effect */
-.tilt-enhanced {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-  transform-style: preserve-3d;
-}
-
-.profile-image-container:hover .tilt-enhanced {
-  transform: translateZ(25px) rotateX(5deg) rotateY(5deg) scale(1.08);
-  box-shadow: 0 20px 50px rgba(130, 69, 236, 0.4), 0 0 50px rgba(236, 72, 153, 0.3);
-}
-
-/* Inner Glow Enhancement */
-.profile-image-container .inner-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translateZ(10px);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(130, 69, 236, 0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 0.4s ease;
-  filter: blur(20px);
-  pointer-events: none;
-}
-
-.profile-image-container:hover .inner-glow {
-  opacity: 1;
-  transform: translate(-50%, -50%) translateZ(15px) scale(1.2);
-}
-
-/* Background Glow Enhancement */
-.profile-image-container .bg-glow {
+/* Top fade: blends INTO the section from the previous section's dark bg */
+.about-fade-top {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  height: 220px;
+  background: linear-gradient(
+    to bottom,
+    #000000 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bottom fade: section dissolves OUT smoothly into next section */
+.about-fade-bottom {
+  position: absolute;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(130, 69, 236, 0.2) 0%, transparent 70%);
+  left: 0;
+  right: 0;
+  height: 260px;
+  background: linear-gradient(
+    to top,
+    #000000 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ABOUT — Premium 3D Floating Image Scene
+═══════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ─────────────────────────────────────────── */
+@keyframes about-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-10px) rotate(0.5deg); }
+  66%       { transform: translateY(-5px) rotate(-0.5deg); }
+}
+
+@keyframes about-spin-cw {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes about-spin-ccw {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes about-pulse-orb {
+  0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 0.55; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+@keyframes about-particle {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+  30%       { opacity: 1; transform: translateY(-18px) scale(1); }
+  70%       { opacity: 0.6; transform: translateY(-30px) scale(0.8); }
+}
+
+@keyframes about-sheen {
+  0%   { left: -120%; }
+  100% { left: 200%; }
+}
+
+/* 3D globe swipe: Y-axis spin on hover enter */
+@keyframes about-globe-enter {
+  0%   { transform: perspective(800px) rotateY(-25deg) scale(0.94); opacity: 0.7; }
+  50%  { transform: perspective(800px) rotateY(10deg) scale(1.06); opacity: 1; }
+  100% { transform: perspective(800px) rotateY(0deg) scale(1.04); opacity: 1; }
+}
+
+/* Hover ring expand */
+@keyframes about-ring-expand {
+  0%   { transform: translate(-50%, -50%) scale(0.85); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0; }
+}
+
+/* ── Scene container ───────────────────────────────────── */
+.about-img-scene {
+  position: relative;
+  width: 340px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .about-img-scene { width: 390px; height: 480px; }
+}
+
+/* ── Ambient glow orbs ─────────────────────────────────── */
+.about-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  pointer-events: none;
+  animation: about-pulse-orb 6s ease-in-out infinite;
+}
+
+.about-orb-1 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, transparent 70%);
+  filter: blur(50px);
+  animation-delay: 0s;
+}
+
+.about-orb-2 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  filter: blur(40px);
+  animation-delay: 2s;
+}
+
+.about-orb-3 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.18) 0%, transparent 70%);
+  filter: blur(30px);
+  animation-delay: 4s;
+}
+
+/* ── Spinning rings ────────────────────────────────────── */
+.about-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
   pointer-events: none;
 }
 
-.profile-image-container:hover .bg-glow {
+.about-ring-1 {
+  width: 370px;
+  height: 370px;
+  border: 1.5px solid rgba(99, 102, 241, 0.22);
+  animation: about-spin-cw 18s linear infinite;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.08) inset;
+}
+
+.about-ring-2 {
+  width: 310px;
+  height: 310px;
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  animation: about-spin-ccw 14s linear infinite;
+}
+
+.about-ring-3 {
+  width: 420px;
+  height: 420px;
+  border: 1px dashed rgba(236, 72, 153, 0.12);
+  animation: about-spin-cw 28s linear infinite;
+}
+
+/* ── Tilt wrapper ──────────────────────────────────────── */
+.about-tilt-wrap {
+  position: relative;
+  z-index: 10;
+  width: 260px;
+  height: 340px;
+  cursor: grab;
+  animation: about-float 6s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .about-tilt-wrap { width: 300px; height: 390px; }
+}
+
+/* ── Photo wrapper — no border, no bg ─────────────────── */
+.about-photo-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Ground shadow (ellipse at the bottom) */
+.about-floor-shadow {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 28px;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.55) 0%, transparent 75%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Under-body glow */
+.about-figure-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 100% at 50% 100%,
+    rgba(99, 102, 241, 0.20) 0%,
+    rgba(139, 92, 246, 0.12) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* The transparent-bg photo itself */
+.about-photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter:
+    drop-shadow(0 10px 28px rgba(99, 102, 241, 0.55))
+    drop-shadow(0 4px 12px rgba(139, 92, 246, 0.35))
+    drop-shadow(0 0 60px rgba(99, 102, 241, 0.20));
+  transition: filter 0.5s ease;
+  user-select: none;
+}
+
+.about-tilt-wrap:hover .about-photo {
+  filter:
+    drop-shadow(0 16px 40px rgba(99, 102, 241, 0.75))
+    drop-shadow(0 6px 18px rgba(139, 92, 246, 0.5))
+    drop-shadow(0 0 80px rgba(99, 102, 241, 0.35));
+}
+
+/* Sheen sweep on hover */
+.about-sheen {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 3;
+  transition: left 0s;
+}
+
+.about-tilt-wrap:hover .about-sheen {
+  animation: about-sheen 0.8s ease forwards;
+}
+
+/* ── Floating badges ───────────────────────────────────── */
+.about-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(15, 18, 38, 0.95), rgba(10, 12, 28, 0.95));
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.12) inset;
+  backdrop-filter: blur(16px);
+  z-index: 20;
+}
+
+.about-badge-exp {
+  bottom: 10px;
+  right: -12px;
+}
+
+.about-badge-proj {
+  top: 20px;
+  left: -14px;
+}
+
+.about-badge-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #818CF8, #A78BFA);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.about-badge-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+/* ── Floating dot particles ────────────────────────────── */
+.about-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.about-dot-1 {
+  width: 6px; height: 6px;
+  background: #818CF8;
+  top: 12%; left: 8%;
+  animation: about-particle 4s ease-in-out infinite;
+  box-shadow: 0 0 8px #818CF8;
+}
+.about-dot-2 {
+  width: 5px; height: 5px;
+  background: #A78BFA;
+  top: 30%; right: 5%;
+  animation: about-particle 5s ease-in-out infinite 1s;
+  box-shadow: 0 0 8px #A78BFA;
+}
+.about-dot-3 {
+  width: 4px; height: 4px;
+  background: #6EE7B7;
+  bottom: 20%; left: 5%;
+  animation: about-particle 3.5s ease-in-out infinite 0.5s;
+  box-shadow: 0 0 8px #6EE7B7;
+}
+.about-dot-4 {
+  width: 7px; height: 7px;
+  background: #F472B6;
+  bottom: 35%; right: 8%;
+  animation: about-particle 6s ease-in-out infinite 2s;
+  box-shadow: 0 0 10px #F472B6;
+}
+.about-dot-5 {
+  width: 4px; height: 4px;
+  background: #60A5FA;
+  top: 55%; left: 3%;
+  animation: about-particle 4.5s ease-in-out infinite 1.5s;
+  box-shadow: 0 0 8px #60A5FA;
+}
+
+/* ── 3D Globe Hover Group ──────────────────────────────── */
+.about-globe-group {
+  position: relative;
+  z-index: 10;
+  transform-style: preserve-3d;
+  /* Smooth 3D swipe entrance on hover */
+  transition:
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.5s ease;
+}
+
+.about-globe-group:hover {
+  animation: about-globe-enter 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  filter:
+    drop-shadow(0 0 40px rgba(99, 102, 241, 0.6))
+    drop-shadow(0 0 80px rgba(139, 92, 246, 0.35));
+}
+
+/* Circular glow ring that bursts outward on hover */
+.about-hover-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  box-shadow:
+    0 0 30px rgba(99, 102, 241, 0.35),
+    0 0 60px rgba(139, 92, 246, 0.2) inset;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s ease, opacity 0.3s ease;
+  z-index: -1;
+}
+
+.about-globe-group:hover .about-hover-ring {
+  transform: translate(-50%, -50%) scale(1.1);
   opacity: 1;
+  animation: about-ring-expand 1.2s ease-out infinite;
+}
+
+/* Also boost the photo drop-shadow on group hover */
+.about-globe-group:hover .about-photo {
+  filter:
+    drop-shadow(0 18px 44px rgba(99, 102, 241, 0.85))
+    drop-shadow(0 6px 20px rgba(139, 92, 246, 0.6))
+    drop-shadow(0 0 100px rgba(99, 102, 241, 0.4));
+}
+
+/* ── Legacy profile image helpers (kept for compatibility) ── */
+.profile-image-container {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
 }

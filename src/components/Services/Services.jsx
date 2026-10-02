@@ -65,7 +65,7 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="relative overflow-hidden py-24 md:py-32 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[10vw] font-sans bg-gradient-to-b from-[#000428] to-black border-t border-white/[0.05]"
+      className="seamless-section relative overflow-hidden py-24 md:py-32 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[10vw] font-sans"
     >
       {/* Background Dot Grid */}
       <div 
